@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\docs/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\app/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\db/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\scripts/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\.claude/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\app\\api\\ingest/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\app/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\app\\api\\ingest-opus/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\ai/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\resolver/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\ai/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\resolver/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\resolver/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\config/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator/**)",
+      "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\config/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "company_context": {
+    "business": "Opus - Modern EHR for behavioral health providers",
+    "industry": "Healthcare technology, specifically behavioral health (outpatient, residential, detox)",
+    "key_products": {
+      "core": "Electronic Health Records (EHR) system",
+      "crm": "Integrated CRM (white-labeled LeadSquared)",
+      "rcm": "Revenue Cycle Management (Practice Suite)",
+      "ai_scribe": "AI-powered clinical note generation",
+      "compliance": "Opus Assistant/Genie compliance and rule engine",
+      "eprescribing": "E-prescribing via DoseSpot",
+      "kiosk": "Patient check-in kiosk"
+    },
+    "pricing": {
+      "providers": "$79/month per full-time provider",
+      "admins": "$39/month per admin user",
+      "ai_scribe": "$150/month (or $105/month with discount)",
+      "kiosk": "$150/month"
+    },
+    "competitors": ["Simple Practice", "Therapy Notes", "Tebra", "InSync"],
+    "differentiators": [
+      "Modern, intuitive UI",
+      "Integrated CRM capabilities",
+      "Full RCM solution",
+      "AI-powered features",
+      "Comprehensive compliance engine",
+      "HIPAA and 42 CFR Part 2 compliant"
+    ]
+  },
+  
+  "team_structure": {
+    "your_role": {
+      "title": "Operations & Sales Leader",
+      "focus": "75% sales, 25% operational oversight",
+      "reports_to": "Humberto (CEO)",
+      "key_metrics": [
+        "Implementation time reduction",
+        "CSAT scores",
+        "Engineering pain score",
+        "Customer testimonials",
+        "Closed deals and ARR"
+      ]
+    },
+    "key_assistant": {
+      "name": "Gabriel",
+      "role": "Deal Assistant",
+      "responsibilities": [
+        "Demo scheduling and coordination",
+        "Follow-up emails with recordings",
+        "Proposal creation",
+        "MSA drafting",
+        "HubSpot updates",
+        "Task organization",
+        "Email and calendar management"
+      ]
+    },
+    "department_heads": {
+      "support": {
+        "head": "Rodrigo",
+        "backup": "John",
+        "focus": "Customer support and issue resolution"
+      },
+      "onboarding": {
+        "head": "Janelle",
+        "focus": "Customer implementation and training",
+        "challenges": ["RCM partner delays", "System stability during onboarding"]
+      },
+      "engineering": {
+        "head": "Hector",
+        "focus": "Product development and bug fixes",
+        "challenges": ["Response time for bugs", "Custom behavior requests"]
+      },
+      "marketing": {
+        "head": "Shawn",
+        "focus": "Lead generation and campaigns"
+      },
+      "management": {
+        "head": "Humberto",
+        "role": "CEO",
+        "focus": "Strategic direction and oversight"
+      }
+    },
+    "specialists": {
+      "ehr_technical": ["Engineering team"],
+      "crm": ["Nick", "Esha"],
+      "eprescribing": ["Nicole (DoseSpot)"],
+      "rcm": ["Arun"]
+    }
+  },
+  
+  "projects": [
+    {
+      "asana_id": "1211229573213014",
+      "name": "[PROSPECT] Sunrise Behavioral",
+      "category": "prospect",
+      "matching_keywords": ["sunrise", "sunrise behavioral", "sunrise prospect"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "TEST PROSPECT - Sunrise Behavioral is a test prospect for system testing. Behavioral health provider evaluating EHR solutions.",
+        "stage": "Initial discovery",
+        "key_contacts": "TBD - Will be updated",
+        "pain_points": "Looking for modern EHR with integrated billing",
+        "notes": "This is a test prospect for validating the Asana Operator system",
+        "next_steps": "Schedule discovery call, demo system capabilities"
+      }
+    },
+    {
+      "asana_id": "PLACEHOLDER_DEPT_ONBOARDING_INACTIVE",
+      "name": "[DEPT] Onboarding",
+      "category": "department",
+      "matching_keywords": ["onboarding", "janelle", "implementation", "training", "setup", "migration"],
+      "default_assignee": "janelle@opus.com",
+      "rich_context": {
+        "purpose": "Customer implementation and training",
+        "current_challenges": "Delays from RCM partner (Practice Suite), claim rejections, system instability during onboarding",
+        "key_metrics": "Implementation time, successful go-lives, customer satisfaction during onboarding",
+        "strategic_focus": "Reducing onboarding time is a key company goal"
+      }
+    },
+    {
+      "asana_id": "PLACEHOLDER_DEPT_ENGINEERING_INACTIVE",
+      "name": "[DEPT] Engineering", 
+      "category": "department",
+      "matching_keywords": ["engineering", "hector", "bug", "feature", "technical", "api", "integration", "development"],
+      "default_assignee": "hector@opus.com",
+      "rich_context": {
+        "purpose": "Product development, bug fixes, and technical improvements",
+        "tools": "Linear for dev tickets",
+        "current_challenges": "Response time for bugs, custom system behavior requests",
+        "key_metrics": "Engineering pain score, bug resolution time, feature delivery",
+        "team_focus": "Stability, performance, new feature development"
+      }
+    },
+    {
+      "asana_id": "PLACEHOLDER_DEPT_SUPPORT_INACTIVE",
+      "name": "[DEPT] Support",
+      "category": "department",
+      "matching_keywords": ["support", "rodrigo", "john", "ticket", "issue", "customer problem", "help"],
+      "default_assignee": "rodrigo@opus.com",
+      "rich_context": {
+        "purpose": "Customer support and issue resolution",
+        "tools": "HubSpot for support tickets",
+        "key_metrics": "CSAT scores, ticket resolution time, escalation rate",
+        "common_issues": "User access problems, billing questions, feature requests"
+      }
+    },
+    {
+      "asana_id": "PLACEHOLDER_DEPT_MARKETING_INACTIVE",
+      "name": "[DEPT] Marketing",
+      "category": "department",
+      "matching_keywords": ["marketing", "shawn", "campaign", "content", "website", "seo", "ads"],
+      "default_assignee": "shawn@opus.com",
+      "rich_context": {
+        "purpose": "Lead generation, brand awareness, and marketing campaigns",
+        "lead_sources": "Website, referrals, channel partners, Software Advice, SelectHub",
+        "focus_areas": "Behavioral health provider targeting, competitive positioning"
+      }
+    },
+    {
+      "asana_id": "PLACEHOLDER_PROJECT_RCM_INACTIVE",
+      "name": "[PROJECT] RCM Partner Transition",
+      "category": "strategic",
+      "matching_keywords": ["rcm", "practice suite", "billing", "claims", "revenue cycle"],
+      "default_assignee": "adi@opus.com",
+      "rich_context": {
+        "purpose": "Strategic initiative to partner with new RCM vendor",
+        "current_situation": "Practice Suite causing delays and claim rejections",
+        "goal": "Find and integrate better RCM partner to improve onboarding time and billing success",
+        "stakeholders": "Arun (RCM specialist), Janelle (Onboarding), customer success team"
+      }
+    }
+  ],
+  
+  "smart_routing": {
+    "keyword_to_assignee": {
+      "demo": "gabriel@opus.com",
+      "proposal": "gabriel@opus.com",
+      "msa": "gabriel@opus.com",
+      "follow up": "gabriel@opus.com",
+      "hubspot": "gabriel@opus.com",
+      "bug": "hector@opus.com",
+      "feature request": "hector@opus.com",
+      "technical": "hector@opus.com",
+      "onboarding delay": "janelle@opus.com",
+      "implementation": "janelle@opus.com",
+      "support ticket": "rodrigo@opus.com",
+      "customer complaint": "rodrigo@opus.com",
+      "campaign": "shawn@opus.com",
+      "marketing": "shawn@opus.com"
+    },
+    "default_assignee_by_category": {
+      "prospect": "gabriel@opus.com",
+      "customer": "rodrigo@opus.com",
+      "department": "department_head",
+      "strategic": "adi@opus.com"
+    }
+  },
+  
+  "task_templates": {
+    "demo_followup": {
+      "title_prefix": "Follow up - ",
+      "description_template": "Send Grain recording, coordinate next meeting, update HubSpot stage. Focus on: {specific_focus}"
+    },
+    "bug_report": {
+      "title_prefix": "BUG: ",
+      "description_template": "Customer: {customer_name}\nIssue: {issue_description}\nImpact: {impact_level}\nSteps to reproduce: {steps}"
+    },
+    "prospect_research": {
+      "title_prefix": "Research - ",
+      "description_template": "Research {company_name} - {company_type} behavioral health provider\nKey points: Current EHR, pain points, decision timeline, budget range"
+    }
+  }
+}
