@@ -15,6 +15,7 @@ const EnhancedTaskSchema = z.object({
   title: z.string().describe('Clear, actionable task title'),
   description: z.string().describe('Detailed task description with relevant context'),
   assignee_email: z.string().nullable().describe('Email of the person to assign the task to'),
+  section_name: z.string().nullable().describe('Which section this task belongs to based on content'),
   priority: z.enum(['high', 'medium', 'low']).optional().describe('Task priority based on content'),
   due_date: z.string().nullable().optional().describe('Due date if mentioned'),
   tags: z.array(z.string()).optional().describe('Relevant tags for the task'),
@@ -129,6 +130,7 @@ Return the name of the best matching project, or null if no clear match.`
     title: string
     description: string
     assignee_email: string | null
+    section_name: string | null
     priority?: string
     tags?: string[]
   }> {
@@ -149,14 +151,27 @@ ${JSON.stringify(project.rich_context, null, 2)}
 TEAM CONTEXT:
 ${JSON.stringify(config.team_structure, null, 2)}
 
+AVAILABLE SECTIONS (for prospect projects):
+- "📞 Initial Outreach" - First contact, introductions, cold outreach
+- "🔍 Discovery" - Learning about client needs, research, understanding requirements
+- "🎬 Demo/Presentation" - Product demos, presentations, feature showcases
+- "📝 Proposal" - Proposals, quotes, pricing discussions, contracts
+- "🤝 Negotiation" - Contract negotiations, terms discussions, agreements
+- "⏰ Follow-up" - Follow-up tasks, check-ins, reminders
+- "📅 Meeting Notes" - Meeting summaries, call notes (use for parent meeting tasks)
+- "🧭 Strategy" - Deal strategy, intelligence, competitive positioning
+- "✅ Closed Won" - Successfully closed deals
+- "❌ Closed Lost" - Lost opportunities
+
 USER REQUEST: "${text}"
 
 Create a detailed, actionable task based on the request. Include:
 1. A clear, specific title
 2. A comprehensive description with relevant business context
 3. The appropriate assignee based on the task nature and team structure
-4. Priority level if apparent from the request
-5. Any relevant tags
+4. The correct section name based on the task content (use exact section name from list above)
+5. Priority level if apparent from the request
+6. Any relevant tags
 
 Consider:
 - Is this sales-related? Assign to Gabriel (gabriel@opus.com)
@@ -164,7 +179,14 @@ Consider:
 - Is this strategic? May need to assign to Adi (adi@opus.com)
 - Include relevant Opus product details (pricing, features, competitors) when applicable
 - Reference KPIs and metrics when relevant
-- Use the communication style appropriate for the assignee`
+- Use the communication style appropriate for the assignee
+
+Section Selection Logic:
+- "demo" keyword → "🎬 Demo/Presentation"
+- "proposal", "quote", "pricing" → "📝 Proposal"
+- "follow up", "check in" → "⏰ Follow-up"
+- "meeting notes", "call summary" → "📅 Meeting Notes"
+- Default to "⏰ Follow-up" if unclear`
 
     console.log('📝 AI Client: Sending task creation prompt to Gemini')
     
@@ -180,6 +202,7 @@ Consider:
       console.log('📨 AI Client: Received task details from Gemini:', {
         title: object.title,
         assignee: object.assignee_email || 'unassigned',
+        section: object.section_name || 'none',
         priority: object.priority,
         has_due_date: !!object.due_date,
         tags_count: object.tags?.length || 0
@@ -189,6 +212,7 @@ Consider:
         title: object.title,
         description: object.description,
         assignee_email: object.assignee_email,
+        section_name: object.section_name,
         priority: object.priority,
         tags: object.tags,
       }
@@ -201,6 +225,7 @@ Consider:
         title: text.substring(0, 100),
         description: text,
         assignee_email: project.default_assignee || null,
+        section_name: '⏰ Follow-up', // Default section
       }
     }
   }

@@ -94,6 +94,59 @@ async function findAssigneeId(email: string): Promise<string | null> {
   return user.length > 0 ? user[0].id : null
 }
 
+// Helper to get or create section ID
+async function getSectionId(projectId: string, sectionName: string | null): Promise<string | null> {
+  if (!sectionName) return null
+  
+  try {
+    // Since we don't have database access in local dev, we'll create sections on-demand via Asana API
+    // In production, this would first check the database cache
+    
+    const asanaClient = getAsanaClient()
+    
+    // Get existing sections for the project
+    const sections = await asanaClient.listSections(projectId)
+    
+    // Find matching section
+    const matchingSection = sections.find(s => s.name === sectionName)
+    
+    if (matchingSection) {
+      console.log(`✅ Found existing section: ${sectionName} (${matchingSection.gid})`)
+      return matchingSection.gid
+    }
+    
+    // Section doesn't exist, create it
+    console.log(`⚠️ Section not found, creating: ${sectionName}`)
+    
+    const response = await fetch(
+      `https://app.asana.com/api/1.0/projects/${projectId}/sections`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.ASANA_PAT}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: { name: sectionName }
+        })
+      }
+    )
+    
+    if (!response.ok) {
+      console.error(`Failed to create section: ${response.statusText}`)
+      return null
+    }
+    
+    const result = await response.json()
+    console.log(`✅ Created new section: ${sectionName} (${result.data.gid})`)
+    return result.data.gid
+    
+  } catch (error) {
+    console.error('Error getting/creating section:', error)
+    return null
+  }
+}
+
 export async function POST(request: NextRequest): Promise<NextResponse<IngestResponse>> {
   try {
     // Check authentication
@@ -176,6 +229,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
     console.log('🤖 AI Task Details:', {
       title: taskDetails.title,
       assignee: taskDetails.assignee_email || 'unassigned',
+      section: taskDetails.section_name || 'none',
       descriptionLength: taskDetails.description.length
     })
     console.log('✅ Task created:', taskDetails.title)
@@ -208,11 +262,24 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       })
     }
     
+    // Get section ID if section name was determined
+    let sectionId: string | null = null
+    if (taskDetails.section_name) {
+      console.log('\n🔍 Looking up section:', taskDetails.section_name)
+      sectionId = await getSectionId(matchResult.project.asana_id, taskDetails.section_name)
+      if (sectionId) {
+        console.log(`✅ Using section ID: ${sectionId}`)
+      } else {
+        console.log('⚠️ Section not found/created, task will go to default section')
+      }
+    }
+    
     // Create task in Asana
     console.log('\n🚀 Creating task in Asana...')
     console.log('  Project ID:', matchResult.project.asana_id)
     console.log('  Task Title:', taskDetails.title)
     console.log('  Assignee ID:', assigneeId || 'unassigned')
+    console.log('  Section ID:', sectionId || 'default')
     
     const asanaClient = getAsanaClient()
     
@@ -239,6 +306,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       notes: taskDetails.description,
       projectId: matchResult.project.asana_id,
       assigneeId: assigneeId || undefined,
+      sectionId: sectionId || undefined,
     })
     
     // Record the operation

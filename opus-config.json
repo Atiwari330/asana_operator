@@ -90,18 +90,146 @@
   
   "projects": [
     {
-      "asana_id": "1211229573213014",
-      "name": "[PROSPECT] Sunrise Behavioral",
+      "asana_id": "1211174798540700",
+      "name": "[PROSPECT] True North",
       "category": "prospect",
-      "matching_keywords": ["sunrise", "sunrise behavioral", "sunrise prospect"],
+      "matching_keywords": ["true north", "true", "north"],
       "default_assignee": "gabriel@opus.com",
       "rich_context": {
-        "company_info": "TEST PROSPECT - Sunrise Behavioral is a test prospect for system testing. Behavioral health provider evaluating EHR solutions.",
-        "stage": "Initial discovery",
-        "key_contacts": "TBD - Will be updated",
-        "pain_points": "Looking for modern EHR with integrated billing",
-        "notes": "This is a test prospect for validating the Asana Operator system",
-        "next_steps": "Schedule discovery call, demo system capabilities"
+        "company_info": "Behavioral health provider evaluating EHR solutions",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Looking for modern EHR with integrated features",
+        "next_steps": "Follow up on demo, proposal preparation"
+      }
+    },
+    {
+      "asana_id": "1211114462739014",
+      "name": "[PROSPECT] NeuPath Mind Wellness",
+      "category": "prospect",
+      "matching_keywords": ["neupath", "mind wellness", "neupath mind", "wellness"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Mental health and wellness center",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Need comprehensive mental health EHR solution",
+        "next_steps": "Schedule demo, discuss specific needs"
+      }
+    },
+    {
+      "asana_id": "1211185031195943",
+      "name": "[PROSPECT] Relationships Australia",
+      "category": "prospect",
+      "matching_keywords": ["relationships australia", "relationships", "australia"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Australian counseling and relationship services provider",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "International compliance, multi-location support",
+        "next_steps": "Discuss Australian compliance requirements"
+      }
+    },
+    {
+      "asana_id": "1211114462739017",
+      "name": "[PROSPECT] Shiloh Treatment Center",
+      "category": "prospect",
+      "matching_keywords": ["shiloh", "shiloh treatment", "treatment center"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Substance abuse and addiction treatment center",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Need integrated treatment planning and billing",
+        "next_steps": "Demo addiction treatment features"
+      }
+    },
+    {
+      "asana_id": "1211114458655267",
+      "name": "[PROSPECT] I Am Recovery",
+      "category": "prospect",
+      "matching_keywords": ["i am recovery", "recovery", "iam"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Recovery and rehabilitation services",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Track patient recovery journey, outcomes reporting",
+        "next_steps": "Present recovery-focused features"
+      }
+    },
+    {
+      "asana_id": "1211114462739023",
+      "name": "[PROSPECT] Professional Counseling Center",
+      "category": "prospect",
+      "matching_keywords": ["professional counseling", "counseling center", "pcc"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Multi-therapist counseling practice",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Therapist scheduling, note management, billing",
+        "next_steps": "Demo practice management features"
+      }
+    },
+    {
+      "asana_id": "1211114458655276",
+      "name": "[PROSPECT] Serenity Psychotherapy",
+      "category": "prospect",
+      "matching_keywords": ["serenity", "psychotherapy", "serenity psychotherapy"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Psychotherapy practice",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "HIPAA compliance, session notes, client portal",
+        "next_steps": "Discuss therapy-specific features"
+      }
+    },
+    {
+      "asana_id": "1211154624487194",
+      "name": "[PROSPECT] We Fix Brains",
+      "category": "prospect",
+      "matching_keywords": ["we fix brains", "fix brains", "brains"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Neurotherapy and brain health clinic",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Specialized neurotherapy documentation needs",
+        "next_steps": "Explore custom form capabilities"
+      }
+    },
+    {
+      "asana_id": "1211114462739020",
+      "name": "[PROSPECT] Fathers UpLift",
+      "category": "prospect",
+      "matching_keywords": ["fathers uplift", "fathers", "uplift"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Mental health support for fathers and families",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Family therapy documentation, group session management",
+        "next_steps": "Demo family therapy features"
+      }
+    },
+    {
+      "asana_id": "1211223917430630",
+      "name": "[PROSPECT] Wellmore Prospecting",
+      "category": "prospect",
+      "matching_keywords": ["wellmore", "wellmore prospecting", "prospecting"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Behavioral health services provider",
+        "stage": "Initial Prospecting",
+        "pain_points": "Evaluating EHR options",
+        "next_steps": "Initial outreach and discovery"
+      }
+    },
+    {
+      "asana_id": "1211106489570613",
+      "name": "[PROSPECT] Family Houston",
+      "category": "prospect",
+      "matching_keywords": ["family houston", "houston", "family"],
+      "default_assignee": "gabriel@opus.com",
+      "rich_context": {
+        "company_info": "Family counseling and support services in Houston",
+        "stage": "Discovery/Evaluation",
+        "pain_points": "Multi-location coordination, family therapy documentation",
+        "next_steps": "Discuss multi-site capabilities"
       }
     },
     {

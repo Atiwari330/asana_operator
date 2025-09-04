@@ -12,6 +12,7 @@
     "drizzle:studio": "drizzle-kit studio",
     "sync:asana": "tsx ./scripts/syncAsanaMeta.ts",
     "sync:opus": "tsx ./scripts/syncOpusProjects.ts",
+    "sync:sections": "tsx ./scripts/syncSections.ts",
     "discover:projects": "tsx ./scripts/discoverProjects.ts"
   },
   "main": "index.js",
