@@ -97,8 +97,18 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Asana Operator</h1>
-          <p className="text-gray-600 mb-6">Create tasks with natural language</p>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">Asana Operator</h1>
+              <p className="text-gray-600">Create tasks with natural language</p>
+            </div>
+            <a
+              href="/meeting-processor"
+              className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
+            >
+              Process Meeting Transcript →
+            </a>
+          </div>
 
           {/* Input Section */}
           <div className="space-y-4">
