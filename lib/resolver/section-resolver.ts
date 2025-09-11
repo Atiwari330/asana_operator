@@ -44,9 +44,11 @@ export async function getSectionId(projectId: string, sectionName: string | null
       return matchingSection.gid
     }
     
-    // Section doesn't exist, create it
-    console.log(`Creating missing section: ${sectionName} in project ${projectId}`)
+    // Section doesn't exist, skip creation (feature disabled)
+    console.log(`Section not found: ${sectionName} - creation disabled, using default`)
+    return null
     
+    // DISABLED: Section creation code preserved below for future re-enabling
     const response = await fetch(
       `https://app.asana.com/api/1.0/projects/${projectId}/sections`,
       {
