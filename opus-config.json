@@ -285,6 +285,26 @@
       }
     },
     {
+      "asana_id": "1211317165447198",
+      "name": "Adi Rev Ops",
+      "category": "department",
+      "matching_keywords": [
+        "rev ops", "revops", "revenue ops", "revenue operations",
+        "my board", "my tasks", "my rev ops", "my revops",
+        "adi", "a-d-i", "adi's", "adis", "for me", "my list",
+        "adi rev ops", "adi's rev ops", "adi revops",
+        "operations task", "ops task", "personal task"
+      ],
+      "default_assignee": "adi@opus.com",
+      "rich_context": {
+        "purpose": "Adi's personal Rev Ops task management board",
+        "owner": "Adi - Operations & Sales Leader",
+        "scope": "Personal operational tasks, vendor follow-ups, customer communications, strategic initiatives",
+        "usage": "Voice dictation for quick task creation",
+        "common_tasks": "Vendor follow-ups, customer emails, budget reviews, pipeline analysis, team coordination"
+      }
+    },
+    {
       "asana_id": "PLACEHOLDER_PROJECT_RCM_INACTIVE",
       "name": "[PROJECT] RCM Partner Transition",
       "category": "strategic",
