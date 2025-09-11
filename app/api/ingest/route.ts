@@ -4,9 +4,9 @@ import { getGeminiClient } from '@/lib/ai/client'
 import { getAsanaClient } from '@/lib/asana/client'
 import { 
   findProjectIdByName, 
-  findUserIdByName, 
-  findSectionIdByName 
+  findUserIdByName
 } from '@/lib/resolver/match'
+import { getSectionId } from '@/lib/resolver/section-resolver'
 import { db } from '@/lib/db/drizzle'
 import { recentOps } from '@/lib/db/schema'
 import { eq, and, gte } from 'drizzle-orm'
@@ -18,7 +18,7 @@ const IngestRequestSchema = z.object({
   confirmed_ids: z.object({
     project_id: z.string().optional(),
     assignee_id: z.string().optional(),
-    section_id: z.string().optional(),
+    // section_id removed - all tasks use "General" section
   }).optional(),
 })
 
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
     // Step 2: Resolve names to IDs
     let projectId = confirmed_ids?.project_id
     let assigneeId = confirmed_ids?.assignee_id
-    let sectionId = confirmed_ids?.section_id
+    // Section handling removed - will use General section
     
     const needsConfirmation: ConfirmationNeededResponse['options'] = {}
 
@@ -147,13 +147,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       }
     }
 
-    // Resolve section (only if we have a project)
-    if (!sectionId && projectId && extraction.sectionName) {
-      const sectionResult = await findSectionIdByName(projectId, extraction.sectionName)
-      if (sectionResult.id) {
-        sectionId = sectionResult.id
-      } else if (sectionResult.candidates) {
-        needsConfirmation.section = sectionResult.candidates
+    // Always use General section if we have a project
+    let sectionId: string | null = null
+    if (projectId) {
+      sectionId = await getSectionId(projectId)
+      if (!sectionId) {
+        console.log('⚠️ General section not found for project')
       }
     }
 

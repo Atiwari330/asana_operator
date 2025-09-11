@@ -10,7 +10,7 @@ const ActionItemSchema = z.object({
   assignee: z.string().describe('Email of person responsible (gabriel@opus.com, adi@opus.com, or prospect)'),
   title: z.string().describe('Clear, actionable task title'),
   due_date: z.string().nullable().describe('Due date in YYYY-MM-DD format if mentioned'),
-  section: z.string().describe('Section name: Initial Outreach, Discovery, Demo/Presentation, Proposal, Negotiation, Follow-up, etc.'),
+  // section removed - all tasks use "General" section
   context: z.string().describe('Brief context from the meeting')
 })
 
@@ -61,8 +61,8 @@ async function createParentMeetingTask(
   options: ProcessingOptions,
   metadata: z.infer<typeof MeetingMetadataSchema>
 ): Promise<{ taskId: string; taskUrl: string }> {
-  // Get Meeting Notes section
-  const sectionId = await getSectionId(options.projectId, '📅 Meeting Notes')
+  // Get General section for meeting task
+  const sectionId = await getSectionId(options.projectId)
   
   const taskData: any = {
     projects: [options.projectId],
@@ -138,13 +138,7 @@ For each action item, identify:
 1. WHO is responsible (use gabriel@opus.com for most tasks, adi@opus.com for strategic items, or note if it's the prospect's responsibility)
 2. WHAT needs to be done (specific, actionable task)
 3. WHEN it's due (if mentioned)
-4. WHICH section it belongs to:
-   - "📞 Initial Outreach" for initial contact tasks
-   - "🔍 Discovery" for research/learning tasks
-   - "🎬 Demo/Presentation" for demo-related tasks
-   - "📝 Proposal" for proposal/pricing tasks
-   - "🤝 Negotiation" for negotiation tasks
-   - "⏰ Follow-up" for follow-up tasks
+// Section selection removed - all tasks go to "General" section
 
 Transcript chunk:
 ${chunk}
@@ -161,8 +155,8 @@ Extract action items:`
   // Create subtasks for each action item
   for (const item of allActionItems) {
     try {
-      // Get the appropriate section
-      const sectionId = await getSectionId(projectId, item.section)
+      // Always use General section
+      const sectionId = await getSectionId(projectId)
       
       const subtaskData: any = {
         parent: parentTaskId,
@@ -237,8 +231,8 @@ Provide strategic analysis:`
     
     const intelligence = result.object
     
-    // Get Strategy section
-    const sectionId = await getSectionId(projectId, '🧭 Strategy')
+    // Get General section for intelligence task
+    const sectionId = await getSectionId(projectId)
     
     const taskData: any = {
       projects: [projectId],

@@ -49,7 +49,9 @@ export async function loadOpusConfig(): Promise<OpusConfig> {
     return OpusConfigSchema.parse(configData)
   } catch (error) {
     console.error('Failed to load Opus configuration:', error)
-    console.error('Error stack:', error.stack)
+    if (error instanceof Error) {
+      console.error('Error stack:', error.stack)
+    }
     throw new Error('Invalid Opus configuration')
   }
 }

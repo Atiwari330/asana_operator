@@ -1,0 +1,44 @@
+Meeting: Discovery Call with True North Behavioral Health
+Date: January 15, 2025
+Duration: 45 minutes
+Attendees: Adi (Opus), Gabriel (Opus), Sarah Johnson (True North), Mike Chen (True North)
+
+Adi: Good morning everyone, thank you for joining today's discovery call. I'm excited to learn more about True North's needs.
+
+Sarah: Thanks for having us. We're really interested in streamlining our patient intake process. Currently, it takes our staff about 30 minutes per patient.
+
+Mike: Yes, and we're seeing about 50 new patients per week, so this is a significant time investment.
+
+Gabriel: That's definitely something our platform can help with. We've seen other clinics reduce intake time by 60%.
+
+Sarah: That sounds promising. Can you show us a demo of the intake workflow?
+
+Adi: Absolutely. Gabriel, could you schedule a demo for next Tuesday at 2 PM?
+
+Gabriel: I'll send over a calendar invite right after this call.
+
+Mike: What about pricing? We have a budget of around $5,000 per month for software solutions.
+
+Adi: I'll prepare a detailed proposal with our enterprise pricing. Gabriel will send that along with the demo invite.
+
+Sarah: Also, we need to ensure HIPAA compliance. Can you provide documentation?
+
+Gabriel: Yes, I'll include our HIPAA compliance certificate and security documentation in the follow-up email.
+
+Mike: We're also evaluating SimplePractice and TherapyNotes. How do you compare?
+
+Adi: Great question. I'll include a competitive comparison in the proposal highlighting our unique features.
+
+Sarah: This has been very helpful. We need to make a decision by the end of the month.
+
+Adi: Perfect. Let's plan to have the demo on Tuesday, and I'll have the proposal ready by Thursday. Any other questions?
+
+Sarah: No, I think we're good. Looking forward to the demo!
+
+Action Items:
+1. Gabriel to schedule demo for Tuesday at 2 PM
+2. Gabriel to send calendar invite today
+3. Adi to prepare pricing proposal by Thursday
+4. Gabriel to send HIPAA compliance documentation
+5. Adi to include competitive comparison in proposal
+6. Follow up after demo to address any questions

@@ -21,7 +21,7 @@ export const FEW_SHOT_EXAMPLES = [
       assigneeName: "Janelle",
       title: "Update the SOP for client upgrades",
       description: null,
-      sectionName: null,
+      // sectionName removed - using General
       labels: null,
       dueDate: null
     }
@@ -34,7 +34,7 @@ export const FEW_SHOT_EXAMPLES = [
       assigneeName: "Sarah Chen",
       title: "Review the Q4 campaign materials",
       description: null,
-      sectionName: null,
+      // sectionName removed - using General
       labels: null,
       dueDate: "end of week"
     }
@@ -47,7 +47,7 @@ export const FEW_SHOT_EXAMPLES = [
       assigneeName: "Mike",
       title: "Fix login bug",
       description: null,
-      sectionName: "Bugs",
+      // sectionName removed - using General
       labels: null,
       dueDate: null
     }
@@ -60,7 +60,7 @@ export const FEW_SHOT_EXAMPLES = [
       assigneeName: null,
       title: null,
       description: null,
-      sectionName: null,
+      // sectionName removed - using General
       labels: null,
       dueDate: null
     }
@@ -73,7 +73,7 @@ export const FEW_SHOT_EXAMPLES = [
       assigneeName: null,
       title: "Prepare investor deck for the board meeting",
       description: null,
-      sectionName: null,
+      // sectionName removed - using General
       labels: null,
       dueDate: "next Tuesday"
     }

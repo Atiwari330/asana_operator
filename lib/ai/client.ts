@@ -62,7 +62,7 @@ export class GeminiClient {
           assigneeName: null,
           title: null,
           description: null,
-          sectionName: null,
+          // sectionName removed - using General
           labels: null,
           dueDate: null,
         }

@@ -6,7 +6,7 @@ import { Mic, Send, Check, AlertCircle, Loader2 } from 'lucide-react'
 interface ConfirmationOptions {
   project?: Array<{ id: string; name: string }>
   assignee?: Array<{ id: string; name: string; email?: string | null }>
-  section?: Array<{ id: string; name: string }>
+  // section removed - all tasks use "General" section
 }
 
 interface SuccessData {
@@ -26,7 +26,7 @@ export default function Home() {
   const [confirmedIds, setConfirmedIds] = useState<{
     project_id?: string
     assignee_id?: string
-    section_id?: string
+    // section_id removed - using General section
   }>({})
 
   const handleSubmit = async (retryWithConfirmed = false) => {
@@ -86,7 +86,7 @@ export default function Home() {
     }
   }
 
-  const handleConfirmation = (type: 'project' | 'assignee' | 'section', id: string) => {
+  const handleConfirmation = (type: 'project' | 'assignee', id: string) => {
     setConfirmedIds(prev => ({
       ...prev,
       [`${type}_id`]: id,
@@ -188,26 +188,7 @@ export default function Home() {
                 </div>
               )}
 
-              {confirmationNeeded.section && (
-                <div className="mb-4">
-                  <p className="text-sm text-gray-700 mb-2">Select section:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {confirmationNeeded.section.map((s) => (
-                      <button
-                        key={s.id}
-                        onClick={() => handleConfirmation('section', s.id)}
-                        className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                          confirmedIds.section_id === s.id
-                            ? 'bg-blue-500 text-white'
-                            : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
-                        }`}
-                      >
-                        {s.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {/* Section selection removed - all tasks use General section */}
 
               <button
                 onClick={() => handleSubmit(true)}

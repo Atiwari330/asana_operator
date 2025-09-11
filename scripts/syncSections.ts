@@ -45,7 +45,7 @@ if (isForce) {
   console.log('⚠️  FORCE MODE - Will recreate all sections\n')
 }
 
-async function normalizeString(str: string): string {
+function normalizeString(str: string): string {
   return str.toLowerCase().trim().replace(/[^a-z0-9]/g, '_')
 }
 
