@@ -233,16 +233,39 @@
       }
     },
     {
-      "asana_id": "PLACEHOLDER_DEPT_ONBOARDING_INACTIVE",
-      "name": "[DEPT] Onboarding",
+      "asana_id": "1211116494194833",
+      "name": "Onboarding Leadership",
       "category": "department",
-      "matching_keywords": ["onboarding", "janelle", "implementation", "training", "setup", "migration"],
+      "matching_keywords": [
+        "onboarding", "onboarding leadership", "onboarding team",
+        "janelle", "janelle hall", 
+        "implementation", "training", "setup", "migration",
+        "customer onboarding", "implementation team",
+        "client onboarding", "customer training"
+      ],
       "default_assignee": "janelle@opus.com",
       "rich_context": {
-        "purpose": "Customer implementation and training",
+        "purpose": "Leadership and management of customer implementation and training",
+        "key_stakeholders": {
+          "director": "Janelle Hall - Onboarding Director",
+          "executive_sponsor": "Adi - Operations & Sales Leader"
+        },
+        "responsibilities": [
+          "Customer implementation oversight",
+          "Training program development",
+          "Onboarding process optimization",
+          "Team management and coordination"
+        ],
         "current_challenges": "Delays from RCM partner (Practice Suite), claim rejections, system instability during onboarding",
-        "key_metrics": "Implementation time, successful go-lives, customer satisfaction during onboarding",
-        "strategic_focus": "Reducing onboarding time is a key company goal"
+        "key_metrics": "Implementation time, successful go-lives, customer satisfaction during onboarding, team performance",
+        "strategic_focus": "Reducing onboarding time is a key company goal",
+        "common_tasks": [
+          "Review implementation timelines",
+          "Update onboarding documentation",
+          "Coordinate with sales on new customer handoffs",
+          "Track and resolve implementation blockers",
+          "Customer escalation management"
+        ]
       }
     },
     {
