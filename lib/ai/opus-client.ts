@@ -17,7 +17,8 @@ const EnhancedTaskSchema = z.object({
   assignee_email: z.string().nullable().describe('Email of the person to assign the task to'),
   // Removed section_name - all tasks now go to "General" section
   priority: z.enum(['high', 'medium', 'low']).optional().describe('Task priority based on content'),
-  due_date: z.string().nullable().optional().describe('Due date if mentioned'),
+  due_date: z.string().nullable().optional().describe('Due date in YYYY-MM-DD format if only date is specified'),
+  due_datetime: z.string().nullable().optional().describe('Due date and time in ISO 8601 format (YYYY-MM-DDTHH:mm:ss.000Z) if time is specified'),
   tags: z.array(z.string()).optional().describe('Relevant tags for the task'),
 })
 
@@ -132,6 +133,8 @@ Return the name of the best matching project, or null if no clear match.`
     assignee_email: string | null
     // section_name removed - using "General" for all tasks
     priority?: string
+    due_date?: string | null
+    due_datetime?: string | null
     tags?: string[]
   }> {
     console.log('\n🤖 AI Client: Creating contextual task...')
@@ -184,11 +187,18 @@ Create the task with:
 5. Tags ONLY if clearly relevant
 
 Assignment logic (use context to route, not to add content):
-- Sales/demos/follow-ups → Gabriel (gabriel@opus.com)
+- Sales/demos/follow-ups → Gabriel (dlacap@opusbehavioral.com)
 - Department heads → Appropriate head
 - Strategic items → Adi (adi@opus.com)
 
-Remember: Mirror the user's level of detail. Don't manufacture information.`
+Remember: Mirror the user's level of detail. Don't manufacture information.
+
+DATE HANDLING (Today is ${new Date().toISOString().split('T')[0]}):
+- If user mentions a date without time (e.g., "September 15", "next Friday", "tomorrow"), set due_date in YYYY-MM-DD format
+- If user mentions a date WITH time (e.g., "September 15 at 9:30am", "tomorrow at 2pm"), set due_datetime in ISO 8601 format
+- Convert natural language dates: "tomorrow" = next day, "next week" = +7 days, etc.
+- NEVER set both due_date and due_datetime - choose based on whether time was specified
+- If no date is mentioned, leave both fields null`
 
     console.log('📝 AI Client: Sending task creation prompt to Gemini')
     
@@ -206,7 +216,7 @@ Remember: Mirror the user's level of detail. Don't manufacture information.`
         assignee: object.assignee_email || 'unassigned',
         section: 'General', // Always use General section
         priority: object.priority,
-        has_due_date: !!object.due_date,
+        has_due_date: !!object.due_date || !!object.due_datetime,
         tags_count: object.tags?.length || 0
       })
 
@@ -216,6 +226,8 @@ Remember: Mirror the user's level of detail. Don't manufacture information.`
         assignee_email: object.assignee_email,
         // section_name removed - using General
         priority: object.priority,
+        due_date: object.due_date || undefined,
+        due_datetime: object.due_datetime || undefined,
         tags: object.tags,
       }
     } catch (error) {

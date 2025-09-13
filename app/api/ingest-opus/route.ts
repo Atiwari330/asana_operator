@@ -254,6 +254,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       projectId: matchResult.project.asana_id,
       assigneeId: assigneeId || undefined,
       sectionId: sectionId || undefined,
+      dueOn: taskDetails.due_date || undefined,
+      dueAt: taskDetails.due_datetime || undefined,
     })
     
     // Record the operation

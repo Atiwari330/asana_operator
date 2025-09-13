@@ -94,7 +94,7 @@
       "name": "[PROSPECT] True North",
       "category": "prospect",
       "matching_keywords": ["true north", "true", "north"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Behavioral health provider evaluating EHR solutions",
         "stage": "Discovery/Evaluation",
@@ -107,7 +107,7 @@
       "name": "[PROSPECT] NeuPath Mind Wellness",
       "category": "prospect",
       "matching_keywords": ["neupath", "mind wellness", "neupath mind", "wellness"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Mental health and wellness center",
         "stage": "Discovery/Evaluation",
@@ -120,7 +120,7 @@
       "name": "[PROSPECT] Relationships Australia",
       "category": "prospect",
       "matching_keywords": ["relationships australia", "relationships", "australia"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Australian counseling and relationship services provider",
         "stage": "Discovery/Evaluation",
@@ -133,7 +133,7 @@
       "name": "[PROSPECT] Shiloh Treatment Center",
       "category": "prospect",
       "matching_keywords": ["shiloh", "shiloh treatment", "treatment center"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Substance abuse and addiction treatment center",
         "stage": "Discovery/Evaluation",
@@ -146,7 +146,7 @@
       "name": "[PROSPECT] I Am Recovery",
       "category": "prospect",
       "matching_keywords": ["i am recovery", "recovery", "iam"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Recovery and rehabilitation services",
         "stage": "Discovery/Evaluation",
@@ -159,7 +159,7 @@
       "name": "[PROSPECT] Professional Counseling Center",
       "category": "prospect",
       "matching_keywords": ["professional counseling", "counseling center", "pcc"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Multi-therapist counseling practice",
         "stage": "Discovery/Evaluation",
@@ -172,7 +172,7 @@
       "name": "[PROSPECT] Serenity Psychotherapy",
       "category": "prospect",
       "matching_keywords": ["serenity", "psychotherapy", "serenity psychotherapy"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Psychotherapy practice",
         "stage": "Discovery/Evaluation",
@@ -185,7 +185,7 @@
       "name": "[PROSPECT] We Fix Brains",
       "category": "prospect",
       "matching_keywords": ["we fix brains", "fix brains", "brains"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Neurotherapy and brain health clinic",
         "stage": "Discovery/Evaluation",
@@ -198,7 +198,7 @@
       "name": "[PROSPECT] Fathers UpLift",
       "category": "prospect",
       "matching_keywords": ["fathers uplift", "fathers", "uplift"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Mental health support for fathers and families",
         "stage": "Discovery/Evaluation",
@@ -211,7 +211,7 @@
       "name": "[PROSPECT] Wellmore Prospecting",
       "category": "prospect",
       "matching_keywords": ["wellmore", "wellmore prospecting", "prospecting"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Behavioral health services provider",
         "stage": "Initial Prospecting",
@@ -224,7 +224,7 @@
       "name": "[PROSPECT] Family Houston",
       "category": "prospect",
       "matching_keywords": ["family houston", "houston", "family"],
-      "default_assignee": "gabriel@opus.com",
+      "default_assignee": "dlacap@opusbehavioral.com",
       "rich_context": {
         "company_info": "Family counseling and support services in Houston",
         "stage": "Discovery/Evaluation",
@@ -344,11 +344,11 @@
   
   "smart_routing": {
     "keyword_to_assignee": {
-      "demo": "gabriel@opus.com",
-      "proposal": "gabriel@opus.com",
-      "msa": "gabriel@opus.com",
-      "follow up": "gabriel@opus.com",
-      "hubspot": "gabriel@opus.com",
+      "demo": "dlacap@opusbehavioral.com",
+      "proposal": "dlacap@opusbehavioral.com",
+      "msa": "dlacap@opusbehavioral.com",
+      "follow up": "dlacap@opusbehavioral.com",
+      "hubspot": "dlacap@opusbehavioral.com",
       "bug": "hector@opus.com",
       "feature request": "hector@opus.com",
       "technical": "hector@opus.com",
@@ -360,7 +360,7 @@
       "marketing": "shawn@opus.com"
     },
     "default_assignee_by_category": {
-      "prospect": "gabriel@opus.com",
+      "prospect": "dlacap@opusbehavioral.com",
       "customer": "rodrigo@opus.com",
       "department": "department_head",
       "strategic": "adi@opus.com"

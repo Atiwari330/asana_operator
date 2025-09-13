@@ -3,6 +3,8 @@ export interface AsanaTask {
   notes?: string
   projects: string[]
   assignee?: string
+  due_on?: string  // Date only: "YYYY-MM-DD"
+  due_at?: string  // Date with time: "YYYY-MM-DDTHH:mm:ss.fffZ"
   memberships?: Array<{
     project: string
     section?: string
@@ -72,12 +74,16 @@ export class AsanaClient {
     projectId,
     assigneeId,
     sectionId,
+    dueOn,
+    dueAt,
   }: {
     name: string
     notes?: string
     projectId: string
     assigneeId?: string
     sectionId?: string
+    dueOn?: string  // "YYYY-MM-DD" format
+    dueAt?: string  // ISO 8601 format with time
   }): Promise<{ gid: string; permalink_url: string }> {
     const taskData: AsanaTask = {
       name,
@@ -94,6 +100,13 @@ export class AsanaClient {
         project: projectId,
         section: sectionId,
       }]
+    }
+
+    // Add due date - use either due_on OR due_at, not both
+    if (dueAt) {
+      taskData.due_at = dueAt
+    } else if (dueOn) {
+      taskData.due_on = dueOn
     }
 
     const task = await this.fetch<{ gid: string; permalink_url: string }>('/tasks', {
