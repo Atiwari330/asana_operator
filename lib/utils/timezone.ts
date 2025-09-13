@@ -94,24 +94,31 @@ export function convertEasternToUTC(localDateTime: string | null | undefined): s
   }
 
   try {
-    // Parse the local datetime
-    const localDate = new Date(localDateTime);
+    // Parse the datetime string and extract components
+    // We need to treat this as Eastern Time, not the server's local time
+    const [datePart, timePart] = localDateTime.split('T');
+    const [year, month, day] = datePart.split('-').map(Number);
+    const [hour, minute, second = 0] = timePart.split(':').map(Number);
 
     // Check if date is in DST (Daylight Saving Time)
     // DST in US: Second Sunday in March to First Sunday in November
-    const year = localDate.getFullYear();
-    const month = localDate.getMonth(); // 0-indexed
+    const monthIndex = month - 1; // JavaScript months are 0-indexed
+    const isDST = monthIndex >= 2 && monthIndex < 10; // March (2) through October (9)
 
-    // Simplified DST check (March-November)
-    const isDST = month >= 2 && month < 10; // March (2) through October (9)
-
-    // Apply offset: EDT = UTC-4, EST = UTC-5
+    // EDT = UTC-4, EST = UTC-5
+    // Eastern is BEHIND UTC, so we ADD hours to Eastern time to get UTC
     const offsetHours = isDST ? 4 : 5;
-    const offsetMilliseconds = offsetHours * 60 * 60 * 1000;
 
-    // Add offset to convert from Eastern to UTC
-    const utcTimestamp = localDate.getTime() + offsetMilliseconds;
-    const utcDate = new Date(utcTimestamp);
+    // Create a date in UTC by adding the offset to the Eastern time
+    // For example: 2 PM EDT + 4 hours = 6 PM UTC
+    const utcDate = new Date(Date.UTC(
+      year,
+      monthIndex,
+      day,
+      hour + offsetHours,  // Add offset to convert Eastern to UTC
+      minute,
+      second
+    ));
 
     return utcDate.toISOString();
   } catch (error) {
