@@ -193,10 +193,19 @@ Assignment logic (use context to route, not to add content):
 
 Remember: Mirror the user's level of detail. Don't manufacture information.
 
-DATE HANDLING (Today is ${new Date().toISOString().split('T')[0]}):
+DATE HANDLING (Today is ${new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})} - ${new Date().toISOString().split('T')[0]}):
 - If user mentions a date without time (e.g., "September 15", "next Friday", "tomorrow"), set due_date in YYYY-MM-DD format
 - If user mentions a date WITH time (e.g., "September 15 at 9:30am", "tomorrow at 2pm"), set due_datetime in ISO 8601 format
-- Convert natural language dates: "tomorrow" = next day, "next week" = +7 days, etc.
+- Convert natural language dates:
+  * "tomorrow" = the next day
+  * "next [weekday]" = the NEXT occurrence of that weekday (e.g., if today is Friday, "next Tuesday" is Sept 17, not Sept 24)
+  * "next week" = exactly 7 days from today
+  * "[weekday] next week" = that weekday in the following week
 - NEVER set both due_date and due_datetime - choose based on whether time was specified
 - If no date is mentioned, leave both fields null`
 
