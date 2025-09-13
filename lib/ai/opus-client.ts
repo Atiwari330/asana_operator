@@ -200,12 +200,20 @@ DATE HANDLING (Today is ${new Date().toLocaleDateString('en-US', {
   day: 'numeric'
 })} - ${new Date().toISOString().split('T')[0]}):
 - If user mentions a date without time (e.g., "September 15", "next Friday", "tomorrow"), set due_date in YYYY-MM-DD format
-- If user mentions a date WITH time (e.g., "September 15 at 9:30am", "tomorrow at 2pm"), set due_datetime in ISO 8601 format
+- If user mentions a date WITH time, set due_datetime in ISO 8601 format (YYYY-MM-DDTHH:mm:ss.000Z)
+  Examples that indicate time:
+  * "September 15 at 9:30am" → due_datetime
+  * "tomorrow at 2pm" → due_datetime
+  * "Monday by 10 a.m." → due_datetime (BY indicates a deadline time)
+  * "next week by 3pm" → due_datetime
+  * "by end of day" → due_datetime set to 5:00 PM
+  * "by noon" → due_datetime set to 12:00 PM
 - Convert natural language dates:
   * "tomorrow" = the next day
   * "next [weekday]" = the NEXT occurrence of that weekday (e.g., if today is Friday, "next Tuesday" is Sept 17, not Sept 24)
   * "next week" = exactly 7 days from today
   * "[weekday] next week" = that weekday in the following week
+- IMPORTANT: "by [time]" means the same as "at [time]" - both indicate a specific deadline time
 - NEVER set both due_date and due_datetime - choose based on whether time was specified
 - If no date is mentioned, leave both fields null`
 

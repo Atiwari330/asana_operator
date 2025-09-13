@@ -180,7 +180,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       title: taskDetails.title,
       assignee: taskDetails.assignee_email || 'unassigned',
       section: 'General', // Always use General section
-      descriptionLength: taskDetails.description.length
+      descriptionLength: taskDetails.description.length,
+      due_date: taskDetails.due_date || 'none',
+      due_datetime: taskDetails.due_datetime || 'none'
     })
     console.log('✅ Task created:', taskDetails.title)
     
@@ -227,7 +229,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
     console.log('  Task Title:', taskDetails.title)
     console.log('  Assignee ID:', assigneeId || 'unassigned')
     console.log('  Section ID:', sectionId || 'default')
-    
+    console.log('  Due Date (date only):', taskDetails.due_date || 'not set')
+    console.log('  Due DateTime (with time):', taskDetails.due_datetime || 'not set')
+
     const asanaClient = getAsanaClient()
     
     // Skip actual Asana creation if project ID is a placeholder
@@ -248,6 +252,15 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       })
     }
     
+    console.log('📤 Sending to Asana API:', {
+      name: taskDetails.title,
+      projectId: matchResult.project.asana_id,
+      assigneeId: assigneeId || undefined,
+      sectionId: sectionId || undefined,
+      dueOn: taskDetails.due_date || undefined,
+      dueAt: taskDetails.due_datetime || undefined,
+    })
+
     const task = await asanaClient.createTask({
       name: taskDetails.title,
       notes: taskDetails.description,
