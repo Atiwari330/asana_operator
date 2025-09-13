@@ -318,7 +318,7 @@
         "adi rev ops", "adi's rev ops", "adi revops",
         "operations task", "ops task", "personal task"
       ],
-      "default_assignee": "adi@opus.com",
+      "default_assignee": "atiwari@opusbehavioral.com",
       "rich_context": {
         "purpose": "Adi's personal Rev Ops task management board",
         "owner": "Adi - Operations & Sales Leader",
@@ -332,7 +332,7 @@
       "name": "[PROJECT] RCM Partner Transition",
       "category": "strategic",
       "matching_keywords": ["rcm", "practice suite", "billing", "claims", "revenue cycle"],
-      "default_assignee": "adi@opus.com",
+      "default_assignee": "atiwari@opusbehavioral.com",
       "rich_context": {
         "purpose": "Strategic initiative to partner with new RCM vendor",
         "current_situation": "Practice Suite causing delays and claim rejections",

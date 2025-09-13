@@ -189,7 +189,7 @@ Create the task with:
 Assignment logic (use context to route, not to add content):
 - Sales/demos/follow-ups → Gabriel (dlacap@opusbehavioral.com)
 - Department heads → Appropriate head
-- Strategic items → Adi (adi@opus.com)
+- Strategic items → Adi (atiwari@opusbehavioral.com)
 
 Remember: Mirror the user's level of detail. Don't manufacture information.
 
