@@ -155,23 +155,40 @@ ${JSON.stringify(config.team_structure, null, 2)}
 
 USER REQUEST: "${text}"
 
-Create a detailed, actionable task based on the request. Include:
-1. A clear, specific title
-2. A comprehensive description with relevant business context
+CRITICAL: Analyze the complexity of the user's request and match your response accordingly:
+
+1. SIMPLE REQUESTS (< 20 words, basic actions):
+   - Create a minimal task with a brief title
+   - Description should be 1-2 sentences maximum
+   - Example: "Email Karl" → Task: "Email Karl", Description: "Send follow-up email to Karl"
+   - DO NOT add details about products, pricing, or features
+
+2. DETAILED REQUESTS (user provides specific instructions):
+   - Preserve ALL specific details the user mentioned
+   - Include exact instructions they provided
+   - Example: If user mentions "find email about Alaska trip and mention lab integration" → Include those exact details
+   - Only add what the user explicitly stated
+
+3. NEVER ADD:
+   - Product pricing unless user mentions it
+   - Feature lists unless user mentions them
+   - Competitor comparisons unless user mentions them
+   - Meeting details unless user describes them
+   - Business context unless user provides it
+
+Create the task with:
+1. A clear title that reflects the request
+2. A description that matches the input complexity (brief for simple, detailed for complex)
 3. The appropriate assignee based on the task nature and team structure
-// Section selection removed - all tasks use "General" section
-5. Priority level if apparent from the request
-6. Any relevant tags
+4. Priority level ONLY if apparent from the request
+5. Tags ONLY if clearly relevant
 
-Consider:
-- Is this sales-related? Assign to Gabriel (gabriel@opus.com)
-- Is this for a department head? Assign to the appropriate head
-- Is this strategic? May need to assign to Adi (adi@opus.com)
-- Include relevant Opus product details (pricing, features, competitors) when applicable
-- Reference KPIs and metrics when relevant
-- Use the communication style appropriate for the assignee
+Assignment logic (use context to route, not to add content):
+- Sales/demos/follow-ups → Gabriel (gabriel@opus.com)
+- Department heads → Appropriate head
+- Strategic items → Adi (adi@opus.com)
 
-// Section logic removed - all tasks go to "General" section`
+Remember: Mirror the user's level of detail. Don't manufacture information.`
 
     console.log('📝 AI Client: Sending task creation prompt to Gemini')
     

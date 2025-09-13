@@ -43,7 +43,8 @@
       "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\asana/**)",
       "Read(/C:\\Users\\atiwa\\OneDrive\\Desktop\\Asana_operator\\lib\\asana/**)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
