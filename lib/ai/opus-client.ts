@@ -198,7 +198,7 @@ DATE HANDLING (Today is ${new Date().toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
-})} - ${new Date().toISOString().split('T')[0]}):
+})} - ${new Date().toISOString().split('T')[0]}, ${new Date().toLocaleDateString('en-US', { weekday: 'long' })}):
 - If user mentions a date without time (e.g., "September 15", "next Friday", "tomorrow"), set due_date in YYYY-MM-DD format
 - If user mentions a date WITH time, set due_datetime as LOCAL TIME in format YYYY-MM-DDTHH:mm:ss (NO 'Z' suffix - this is Eastern Time)
   Examples that indicate time (all times are Eastern Time):
@@ -208,11 +208,17 @@ DATE HANDLING (Today is ${new Date().toLocaleDateString('en-US', {
   * "next week by 3pm" → due_datetime: "2025-09-20T15:00:00"
   * "by end of day" → due_datetime with time set to "17:00:00" (5 PM)
   * "by noon" → due_datetime with time set to "12:00:00"
-- Convert natural language dates:
+- Convert natural language dates (CRITICAL - follow these rules EXACTLY):
   * "tomorrow" = the next day
-  * "next [weekday]" = the NEXT occurrence of that weekday (e.g., if today is Friday, "next Tuesday" is Sept 17, not Sept 24)
+  * "next [weekday]" = the VERY NEXT occurrence of that weekday - use the CLOSEST upcoming date
+    - If today is Friday Sept 13, "next Monday" = Sept 16 (3 days away, NOT Sept 23)
+    - If today is Friday Sept 13, "next Wednesday" = Sept 17 (4 days away, NOT Sept 24)
+    - If today is Friday Sept 13, "next Friday" = Sept 20 (7 days away)
+    - ALWAYS use the SOONEST occurrence of that weekday
   * "next week" = exactly 7 days from today
-  * "[weekday] next week" = that weekday in the following week
+  * "[weekday] next week" or "next week's [weekday]" = that weekday in the week after this one
+    - If today is Friday Sept 13, "Wednesday next week" = Sept 24 (the Wednesday after Sept 17)
+    - This is for when user explicitly says "next week"
 - IMPORTANT: "by [time]" means the same as "at [time]" - both indicate a specific deadline time
 - IMPORTANT: Generate times as LOCAL Eastern Time, NOT UTC. Do NOT add 'Z' to the end.
 - NEVER set both due_date and due_datetime - choose based on whether time was specified
