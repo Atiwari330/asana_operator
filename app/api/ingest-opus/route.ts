@@ -11,6 +11,7 @@ import { projects as projectsTable, users, recentOps } from '@/lib/db/schema'
 import { eq, and, gte } from 'drizzle-orm'
 import crypto from 'crypto'
 import { getSectionId } from '@/lib/resolver/section-resolver'
+import { convertEasternToUTC, logTimezoneConversion } from '@/lib/utils/timezone'
 
 // Request schema
 const IngestRequestSchema = z.object({
@@ -176,13 +177,21 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       opusConfig
     )
     
+    // Convert local Eastern Time to UTC if datetime is provided
+    let convertedDueDateTime = undefined;
+    if (taskDetails.due_datetime) {
+      convertedDueDateTime = convertEasternToUTC(taskDetails.due_datetime);
+      logTimezoneConversion(taskDetails.due_datetime, convertedDueDateTime, 'Task due time');
+    }
+
     console.log('🤖 AI Task Details:', {
       title: taskDetails.title,
       assignee: taskDetails.assignee_email || 'unassigned',
       section: 'General', // Always use General section
       descriptionLength: taskDetails.description.length,
       due_date: taskDetails.due_date || 'none',
-      due_datetime: taskDetails.due_datetime || 'none'
+      due_datetime_local: taskDetails.due_datetime || 'none',
+      due_datetime_utc: convertedDueDateTime || 'none'
     })
     console.log('✅ Task created:', taskDetails.title)
     
@@ -230,7 +239,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
     console.log('  Assignee ID:', assigneeId || 'unassigned')
     console.log('  Section ID:', sectionId || 'default')
     console.log('  Due Date (date only):', taskDetails.due_date || 'not set')
-    console.log('  Due DateTime (with time):', taskDetails.due_datetime || 'not set')
+    console.log('  Due DateTime (local Eastern):', taskDetails.due_datetime || 'not set')
+    console.log('  Due DateTime (UTC for Asana):', convertedDueDateTime || 'not set')
 
     const asanaClient = getAsanaClient()
     
@@ -258,7 +268,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       assigneeId: assigneeId || undefined,
       sectionId: sectionId || undefined,
       dueOn: taskDetails.due_date || undefined,
-      dueAt: taskDetails.due_datetime || undefined,
+      dueAt: convertedDueDateTime || undefined,
     })
 
     const task = await asanaClient.createTask({
@@ -268,7 +278,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<IngestRes
       assigneeId: assigneeId || undefined,
       sectionId: sectionId || undefined,
       dueOn: taskDetails.due_date || undefined,
-      dueAt: taskDetails.due_datetime || undefined,
+      dueAt: convertedDueDateTime || undefined,  // Use converted UTC time
     })
     
     // Record the operation
